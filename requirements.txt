@@ -1,0 +1,6 @@
+asyncio
+aiogram==2.25.1
+datetime
+pymongo
+requests
+xlsxwriter
