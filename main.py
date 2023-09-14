@@ -1,7 +1,6 @@
 from config import admin_id
 from aiogram import Bot, Dispatcher, executor, types
 import asyncio
-import aioschedule
 import keyboard
 from create_bot import bot, dp
 from api import pricesString, prices
@@ -13,14 +12,6 @@ async def start_mailing():
     prices_mess = '📊USDT/UAH\n' + ('\n'.join(prices_mess.split('\n')[:-1]))
     await bot.send_message(chat_id=-1001740667886, text=prices_mess)
 
-
-async def scheduler():
-    #aioschedule.every().minutes.do(start_mailing)
-    aioschedule.every().day.at("9:00").do(start_mailing)
-    aioschedule.every().day.at("17:00").do(start_mailing)
-    while True:
-        await aioschedule.run_pending()
-        await asyncio.sleep(1)
 
 async def send_admin(dp):
     # asyncio.create_task(scheduler())
